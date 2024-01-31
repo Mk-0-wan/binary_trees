@@ -1,13 +1,12 @@
 CC = gcc
 SRC = $(wildcard *.c) 
-OBJ = $(SRC:.c=.o)
 NAME = btree
 CFLAGS = -Wall -Werror -Wextra -pedantic
 
 all : $(NAME) oclean
 
-$(NAME) : binary_trees.h $(OBJ)
-	$(CC) $^ -g -o $@
+$(NAME) : binary_trees.h $(SRC)
+	$(CC) $^ -g -o $@ -lm
 
 .PHONY : clean oclean fclean re
 

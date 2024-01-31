@@ -4,9 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-/* Macros */
-#define max(z, h) ((z) ^ (((z) ^ (h)) & -((h) < (z))))
+#include <math.h>
 
 /**
  * struct binary_tree_s - Binary tree node
@@ -29,6 +27,8 @@ typedef struct binary_tree_s binary_tree_t;
 /* fucntions */
 void binary_tree_delete(binary_tree_t *tree);
 void binary_tree_print(const binary_tree_t *);
+int binary_tree_is_full(const binary_tree_t *tree);
+int binary_tree_balance(const binary_tree_t *tree);
 int binary_tree_is_leaf(const binary_tree_t *node);
 int binary_tree_is_root(const binary_tree_t *node);
 size_t binary_tree_size(const binary_tree_t *tree);

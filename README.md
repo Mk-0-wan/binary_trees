@@ -13,3 +13,5 @@
 - Please make sure you are using all the user defined datastructure members
 - Parent is a pointer to the parent tree node it needs to always be there, same as a doubly linked list
 - Using recursion to repeate all the tasks in a rabbit hole
+- Balanced algorithm is just modified postorder function where you are looking for the balance of right and left subtree
+

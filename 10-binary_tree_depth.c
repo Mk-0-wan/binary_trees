@@ -7,13 +7,13 @@
  */
 size_t binary_tree_depth(const binary_tree_t *tree)
 {
-	size_t leftheight = 0, rightheight = 0;
+	size_t dp = 0;
 
-	if (!tree)
+	if (tree == NULL || tree->parent == NULL)
 		return (0);
 
-	leftheight = binary_tree_depth(tree->left);
-	rightheight = binary_tree_depth(tree->right);
+	dp = binary_tree_depth(tree->parent);
+	dp++;
 
-	return (max(leftheight, rightheight) + 1);
+	return (dp);
 }
