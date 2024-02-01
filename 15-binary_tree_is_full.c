@@ -26,7 +26,10 @@ int binary_tree_is_full(const binary_tree_t *tree)
 {
 	int lsubtree = 0, rsubtree = 0;
 
-	if (!tree || !tree->parent)
+	if (!tree)
+		return (0);
+
+	if (!tree->parent)
 		return (0);
 
 	lsubtree = theight(tree->left);

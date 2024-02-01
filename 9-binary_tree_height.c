@@ -12,16 +12,11 @@ size_t binary_tree_height(const binary_tree_t *tree)
 	if (!tree)
 		return (0);
 
-	if (tree->left)
-	{
-		/*Adding one due to the root node pointer  aka tree->left */
-		lsubtree +=  1 + binary_tree_height(tree->left);
-	}
-	if (tree->right)
-	{
-		/*Adding one due to the root node pointer  aka tree->right */
-		rsubtree +=  1 + binary_tree_height(tree->right);
-	}
+	/*Adding one due to the root node pointer  aka tree->left */
+	lsubtree += (tree->left) ? binary_tree_height(tree->left) + 1 : 0;
+
+	/*Adding one due to the root node pointer  aka tree->right */
+	rsubtree += (tree->right) ? binary_tree_height(tree->right) + 1 : 0;
 
 	/*Adding one due to the root node pointer  aka tree */
 	return (fmax(lsubtree, rsubtree) + 1);
