@@ -25,6 +25,7 @@ struct binary_tree_s
 typedef struct binary_tree_s binary_tree_t;
 
 /* fucntions */
+size_t theight(const binary_tree_t *root);
 void binary_tree_delete(binary_tree_t *tree);
 void binary_tree_print(const binary_tree_t *);
 int binary_tree_is_full(const binary_tree_t *tree);
