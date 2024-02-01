@@ -1,22 +1,41 @@
 #include "binary_trees.h"
-/**
- * theight - another way to calculate the height of binary tree
- * using tenary operators
- * @root: pointer to the root of the node
- * Return: height of the binary tree
- */
-size_t theight(const binary_tree_t *root)
-{
-	size_t r_side = 0, l_side = 0;
 
-	if (!root)
+/**
+ * h_rsubtree - function that calculates the height of the right
+ * subtree
+ * @root: pointer of the first node in the tree
+ * Return: height of the lsubtree, otherwise 0 if fails
+ */
+size_t h_rsubtree(const binary_tree_t *root)
+{
+	size_t l = 0, r = 0;
+
+	if (root == NULL)
 		return (0);
 
-	l_side += (root->left) ? 1 + theight(root->left) : 0;
-	r_side += (root->right) ? 1 + theight(root->right) : 0;
+	l = h_rsubtree(root->left);
+	r = h_rsubtree(root->right);
 
-	return (fmax(l_side, r_side) + 1);
+	return (1 + max(l, r));
 }
+/**
+ * h_lsubtree - function that calculates the height of the left subtree
+ * @root: pointer of the first node in the tree
+ * Return: height of the lsubtree, otherwise 0 if fails
+ */
+size_t h_lsubtree(const binary_tree_t *root)
+{
+	size_t l = 0, r = 0;
+
+	if (root == NULL)
+		return (0);
+
+	l = h_lsubtree(root->left);
+	r = h_lsubtree(root->right);
+
+	return (1 + max(l, r));
+}
+
 /**
  * binary_tree_is_full - checks if binary_tree is full
  * @tree: pointer to the root node of the tree
@@ -32,8 +51,8 @@ int binary_tree_is_full(const binary_tree_t *tree)
 	if (!tree->parent)
 		return (0);
 
-	lsubtree = theight(tree->left);
-	rsubtree = theight(tree->right);
+	lsubtree = h_lsubtree(tree->left);
+	rsubtree = h_rsubtree(tree->right);
 
 	return ((lsubtree == rsubtree) ? 1 : 0);
 }
