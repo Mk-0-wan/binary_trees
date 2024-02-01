@@ -1,4 +1,5 @@
 #include "binary_trees.h"
+#include <stdlib.h>
 
 /**
  * binary_tree_insert_left - a binary tree that insert node as
@@ -10,11 +11,19 @@
  */
 binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
 {
+	binary_tree_t *new_left_child =  NULL;
 
-	binary_tree_t *new_left_child = binary_tree_node(parent, value);
-
-	if (!parent || !new_left_child)
+	if (!parent)
 		return (NULL);
+
+	new_left_child = malloc(sizeof(binary_tree_t));
+	if (!new_left_child)
+		return (NULL);
+
+	new_left_child->left = NULL;
+	new_left_child->right = NULL;
+	new_left_child->parent = parent;
+	new_left_child->n = value;
 
 	if (parent->left)
 	{
