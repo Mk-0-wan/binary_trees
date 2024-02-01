@@ -16,7 +16,7 @@ size_t height_of_rsubtree(binary_tree_t *root)
 	l = height_of_rsubtree(root->left);
 	r = height_of_rsubtree(root->right);
 
-	return (1 + fmax(l, r));
+	return (1 + max(l, r));
 }
 /**
  * height_of_lsubtree - function that calculates the height of the left subtree
@@ -33,7 +33,7 @@ size_t height_of_lsubtree(binary_tree_t *root)
 	l = height_of_lsubtree(root->left);
 	r = height_of_lsubtree(root->right);
 
-	return (1 + fmax(l, r));
+	return (1 + max(l, r));
 }
 /**
  * binary_tree_height - measures the height of the binary_trees
@@ -50,5 +50,5 @@ size_t binary_tree_height(const binary_tree_t *tree)
 	lsubtree = height_of_lsubtree(tree->left);
 	rsubtree = height_of_rsubtree(tree->right);
 
-	return (fmax(lsubtree, rsubtree));
+	return (max(lsubtree, rsubtree));
 }
