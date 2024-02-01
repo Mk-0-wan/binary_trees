@@ -1,27 +1,54 @@
 #include "binary_trees.h"
+
 /**
-* binary_tree_height - height binary tree
-* @tree: root node of tree
-* Return: height of tree
-*
-*/
+ * height_of_rsubtree - function that calculates the height of the right
+ * subtree
+ * @root: pointer of the first node in the tree
+ * Return: height of the lsubtree, otherwise 0 if fails
+ */
+size_t height_of_rsubtree(binary_tree_t *root)
+{
+	size_t l = 0, r = 0;
+
+	if (root == NULL)
+		return (0);
+
+	l = height_of_rsubtree(root->left);
+	r = height_of_rsubtree(root->right);
+
+	return (1 + fmax(l, r));
+}
+/**
+ * height_of_lsubtree - function that calculates the height of the left subtree
+ * @root: pointer of the first node in the tree
+ * Return: height of the lsubtree, otherwise 0 if fails
+ */
+size_t height_of_lsubtree(binary_tree_t *root)
+{
+	size_t l = 0, r = 0;
+
+	if (root == NULL)
+		return (0);
+
+	l = height_of_lsubtree(root->left);
+	r = height_of_lsubtree(root->right);
+
+	return (1 + fmax(l, r));
+}
+/**
+ * binary_tree_height - measures the height of the binary_trees
+ * @tree: pointer to the root node of the tree
+ * Return: height of the node
+ */
 size_t binary_tree_height(const binary_tree_t *tree)
 {
-	size_t height_left;
-	size_t height_right;
+	size_t lsubtree = 0, rsubtree = 0;
 
-
-	if (tree == NULL)
+	if (!tree)
 		return (0);
 
-	if (!(tree->left) && !(tree->right))
-		return (0);
-	height_left = binary_tree_height(tree->left);
-	height_left++;
-	height_right = binary_tree_height(tree->right);
-	height_right++;
-	if (height_left > height_right)
-		return (height_left);
-	else
-		return (height_right);
+	lsubtree = height_of_lsubtree(tree->left);
+	rsubtree = height_of_rsubtree(tree->right);
+
+	return (fmax(lsubtree, rsubtree));
 }
