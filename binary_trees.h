@@ -33,7 +33,6 @@ size_t height_of_lsubtree(const binary_tree_t *root);
 int binary_tree_is_perfect(const binary_tree_t *tree);
 
 /* fucntions */
-
 size_t theight(const binary_tree_t *root);
 void binary_tree_delete(binary_tree_t *tree);
 void binary_tree_print(const binary_tree_t *);
@@ -53,7 +52,11 @@ void binary_tree_preorder(const binary_tree_t *tree, void (*func)(int));
 void binary_tree_postorder(const binary_tree_t *tree, void (*func)(int));
 binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value);
 binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value);
+
+/* Advanced tasks */
+int binary_tree_is_complete(const binary_tree_t *tree);
+void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int));
+binary_tree_t *binary_tree_rotate_right(binary_tree_t *tree);
 binary_tree_t *binary_trees_ancestor(
 		const binary_tree_t *first, const binary_tree_t *second);
-int binary_tree_is_complete(const binary_tree_t *tree);
 #endif
