@@ -1,4 +1,4 @@
-#include "binary_trees.h"  // Assuming you have the necessary header file
+#include "binary_trees.h"
 
 /**
  * depth_from_lsubtree - function that checks for the depth of the left
@@ -18,6 +18,8 @@ int depth_from_lsubtree(const binary_tree_t *root)
  */
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
+	if (!tree)
+		return (0);
 	return (depth_match(tree, depth_from_lsubtree));
 }
 
