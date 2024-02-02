@@ -30,11 +30,7 @@ typedef struct binary_tree_s binary_tree_t;
 size_t binary_tree_height(const binary_tree_t *tree);
 size_t height_of_rsubtree(const binary_tree_t *root);
 size_t height_of_lsubtree(const binary_tree_t *root);
-
-int depth_match(const binary_tree_t *root,
-		int (*depth)(const binary_tree_t *));
 int binary_tree_is_perfect(const binary_tree_t *tree);
-int depth_from_lsubtree(const binary_tree_t *root);
 
 /* fucntions */
 size_t theight(const binary_tree_t *root);
