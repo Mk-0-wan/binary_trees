@@ -2,21 +2,21 @@
 
 binary_tree_t *find_ancestor_recursive(
 		const binary_tree_t *first, const binary_tree_t *second);
-size_t binary_tree_depth(const binary_tree_t *node);
+size_t find_depth(const binary_tree_t *node);
 /**
- * binary_tree_depth - Calculate the depth of a node in a binary tree.
+ * find_depth - Calculate the depth of a node in a binary tree.
  * @node: Pointer to the node.
  * Return: Depth of the node.
  */
-size_t binary_tree_depth(const binary_tree_t *node)
+size_t find_depth(const binary_tree_t *node)
 {
 	size_t depth = 0;
 
-	while (node && node->parent)
-	{
-		depth++;
-		node = node->parent;
-	}
+	if (!node || !node->parent)
+		return (0);
+
+	depth = find_depth(node->parent);
+	depth++;
 
 	return (depth);
 }
@@ -30,14 +30,16 @@ size_t binary_tree_depth(const binary_tree_t *node)
 binary_tree_t *find_ancestor_recursive(
 		const binary_tree_t *first, const binary_tree_t *second)
 {
+	size_t depth_first = 0, depth_second = 0;
+
 	if (!first || !second)
 		return (NULL);
 
 	if (first == second)
 		return ((binary_tree_t *)first);
 
-	size_t depth_first = binary_tree_depth(first);
-	size_t depth_second = binary_tree_depth(second);
+	depth_first = find_depth(first);
+	depth_second = find_depth(second);
 
 	while (depth_first > depth_second)
 	{
@@ -69,12 +71,8 @@ binary_tree_t *find_ancestor_recursive(
 binary_tree_t *binary_trees_ancestor(
 		const binary_tree_t *first, const binary_tree_t *second)
 {
-	binary_tree_t *ancestor = NULL;
-
 	if (!first || !second)
 		return (NULL);
 
-	ancestor = find_ancestor_recursive(first, second);
-
-	return (ancestor);
+	return (find_ancestor_recursive(first, second));
 }
