@@ -10,14 +10,13 @@ binary_tree_t *find_sibling_recursive(binary_tree_t *root, int value);
  */
 binary_tree_t *find_sibling_recursive(binary_tree_t *root, int value)
 {
-
-	if (!root || !root->parent)
+	if (!root->parent->left || !root->parent->right)
 		return (NULL);
 
-	if (root->parent->left->n == value)
+	if (root->parent->left && root->parent->left->n == value)
 		return (root->parent->right);
 
-	if (root->parent->right->n == value)
+	if (root->parent->right && root->parent->right->n == value)
 		return (root->parent->left);
 
 	return (find_sibling_recursive(root->parent, value));
