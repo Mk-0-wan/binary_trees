@@ -24,11 +24,13 @@ int depth_from_lsubtree(const binary_tree_t *root)
  */
 int depth_match(const binary_tree_t *root, int (*depth)(const binary_tree_t *))
 {
+	int left_depth = 0, right_depth = 0;
+
 	if (!root)
 		return (1);
 
-	int left_depth = depth(root->left);
-	int right_depth = depth(root->right);
+	left_depth = depth(root->left);
+	right_depth = depth(root->right);
 
 	return ((left_depth == right_depth) &&
 		depth_match(root->left, depth) &&
@@ -44,5 +46,6 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 {
 	if (!tree)
 		return (0);
+
 	return (depth_match(tree, depth_from_lsubtree));
 }
