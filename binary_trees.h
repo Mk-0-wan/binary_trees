@@ -33,6 +33,7 @@ size_t height_of_lsubtree(const binary_tree_t *root);
 int binary_tree_is_perfect(const binary_tree_t *tree);
 
 /* fucntions */
+binary_tree_t *binary_tree_sibling(binary_tree_t *node);
 size_t theight(const binary_tree_t *root);
 void binary_tree_delete(binary_tree_t *tree);
 void binary_tree_print(const binary_tree_t *);
