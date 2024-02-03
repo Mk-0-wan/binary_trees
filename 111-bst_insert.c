@@ -10,8 +10,11 @@ bst_t *bst_insert(bst_t **tree, int value)
 {
 	bst_t *curr = (*tree);
 
+	if (!tree)
+		return (NULL);
+
 	if (!(*tree))
-		return (binary_tree_node(NULL, value));
+		return (binary_tree_node(*tree, value));
 
 	while (curr)
 	{
