@@ -17,11 +17,18 @@ bst_t *bst_insert(bst_t **tree, int value)
 
 
 	if (!curr->right)
+	{
 		curr->right = (curr->n > value) ?
 			bst_insert(&(curr->right), value) : NULL;
+		return (curr->right);
+
+	}
 	if (!curr->left)
+	{
 		curr->left = ((curr)->n < value) ?
 			bst_insert(&(curr->left), value) : NULL;
+		return (curr->left);
 
-	return (curr);
+	}
+	return (NULL);
 }
