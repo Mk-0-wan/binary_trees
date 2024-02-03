@@ -8,9 +8,7 @@
  */
 bst_t *bst_insert(bst_t **tree, int value)
 {
-	bst_t *curr;
-
-	curr = *tree;
+	bst_t *curr = *tree;
 
 	if (!tree)
 		return (NULL);
